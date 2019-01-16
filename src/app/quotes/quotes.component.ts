@@ -14,8 +14,8 @@ import { QuoteFormComponent } from './../quotes-form/quotes-form.component';
 export class QuotesComponent implements OnInit {
 
   add = true;
-  voted = true;
-  notVoted = false;
+  voted = 0;
+  notVoted = 0;
 
   currentUpVotes: number;
 
@@ -48,28 +48,32 @@ export class QuotesComponent implements OnInit {
   }
 
   upVotes(quoteInput) {
-    this.voted = !this.voted;
+    this.voted ^= 1;
+    this.currentUpVotes--;
     const index: number = this.quotes.indexOf(quoteInput);
-    if (index !== -1 && this.voted) {
-      this.quotes[index].upVotes++;
-      $('#upvote').css('color', '#4EA699');
-    } else {
-      this.quotes[index].upVotes--;
-      $('#upvote').css('color', '#474747');
-    }
+    this.quotes[index].upVotes += this.voted;
+    // if (index !== -1 && this.voted) {
+    //   this.quotes[index].upVotes = this.voted;
+    //   $('#upvote').css('color', '#4EA699');
+    // } else {
+    //   this.quotes[index].upVotes--;
+    //   $('#upvote').css('color', '#474747');
+    // }
     this.currentUpVotes = this.quotes[index].upVotes;
   }
 
   downVotes(quoteInput) {
-    this.notVoted = !this.notVoted;
+    this.notVoted ^= 1;
+    this.currentUpVotes--;
     const index: number = this.quotes.indexOf(quoteInput);
-      if (index !== -1 && this.notVoted) {
-        this.quotes[index].downVotes--;
-        $('#downvote').css('color', '#4EA699');
-      } else {
-        this.quotes[index].downVotes++;
-        $('#downvote').css('color', '#474747');
-      }
+    this.quotes[index].downVotes += this.notVoted;
+    // if (index !== -1 && this.notVoted) {
+    //   this.quotes[index].downVotes--;
+    //   $('#downvote').css('color', '#4EA699');
+    // } else {
+    //   this.quotes[index].downVotes++;
+    //   $('#downvote').css('color', '#474747');
+    // }
     this.currentUpVotes = this.quotes[index].upVotes;
   }
 
