@@ -1,14 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
+import { QuotesComponent } from './quotes/quotes.component';
+import { QuoteFormComponent } from './quotes-form/quotes-form.component';
+import * as $ from 'jquery';
+import { TimeAgoPipe } from 'time-ago-pipe';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    QuotesComponent,
+    QuoteFormComponent,
+    TimeAgoPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { QuotesComponent } from './quotes/quotes.component';
+import { QuoteFormComponent } from './quotes-form/quotes-form.component';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'quotes-build';
+  title = 'Quotes';
 }
